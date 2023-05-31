@@ -1,0 +1,75 @@
+USE NERDOSDADOS
+GO
+
+--Criando tabela no banco
+CREATE TABLE VIDEOS (
+ID_VIDEO INTEGER, 
+TITULO VARCHAR (100), 
+CATEGORIA VARCHAR (100)
+)
+
+--Inserindo alguns valores no banco
+INSERT INTO VIDEOs VALUES (1, 'Como fazer normalização e padronização dos dados', 'Machine Learning')
+INSERT INTO VIDEOS VALUES (2, 'Como Modelar um banco de dados', 'Banco de dados')
+INSERT INTO VIDEOs VALUES (3, 'Como criar software ágil em C#', 'Desenvolvimento')
+INSERT INTO VIDEOs VALUES (4, 'Como tirar certificação Microsoft', 'Nuvem')
+
+-- Visualizando
+SELECT * FROM VIDEOs
+
+SELECT * FROM VIDEOS WHERE ID_VIDEO IN (1, 2) -- Traz dois registros
+
+-- Atualizando informações
+UPDATE VIDEOS SET TITULO = 'Como tirar certificação AWS' WHERE ID_VIDEO = 4
+
+-- Atualizando de forma segura
+BEGIN TRAN
+	UPDATE VIDEOS SET TITULO = 'Como tirar certificação AWS 2' WHERE ID_VIDEO = 4
+--COMMIT
+--ROLLBACK
+
+--Avançando no SQL
+
+IF EXISTS (SELECT 1 FROM SYS.OBJECTS WHERE NAME = 'VIDEOS' AND TYPE = 'U')
+	BEGIN
+		DROP TABLE VIDEOS
+	END
+
+
+CREATE TABLE VIDEOS (
+ID_VIDEO INTEGER IDENTITY (1, 1), 
+TITULO VARCHAR (100), 
+CATEGORIA VARCHAR (100)
+)
+
+-- Inserindo novos valores novamente (Sem os IDs)
+INSERT INTO VIDEOs VALUES ('Como fazer normalização e padronização dos dados', 'Machine Learning')
+INSERT INTO VIDEOS VALUES ('Como Modelar um banco de dados', 'Banco de dados')
+INSERT INTO VIDEOs VALUES ('Como criar software ágil em C#', 'Desenvolvimento')
+INSERT INTO VIDEOs VALUES ('Como tirar certificação Microsoft', 'Nuvem')
+
+SELECT * FROM VIDEOS
+
+-- Avançando no SQL 2
+IF EXISTS (SELECT 1 FROM SYS.OBJECTS WHERE NAME = 'VIDEOS' AND TYPE = 'U')
+	BEGIN
+		DROP TABLE VIDEOS
+	END
+
+--Criando a tabela novamente
+CREATE TABLE VIDEOS (
+ID_VIDEO		INTEGER IDENTITY (1,1),
+TITULO			VARCHAR(100),
+CATEGORIA		VARCHAR(100),
+DATA_VIDEO		DATE)
+
+--Inserindo novos valores
+INSERT INTO VIDEOS VALUES ('COMO FAZER NORMALIZAÇÃO E PADRONIZAÇÃO DE DADOS', 'MACHINE LEARNING','2022-07-10')
+INSERT INTO VIDEOS VALUES ('COMO FAZER UM MODELO DE CLUSTERIZAÇÃO', 'MACHINE LEARNING','2022-08-10')
+INSERT INTO VIDEOS VALUES ('COMO APRENDER PYTHON DO ZERO', 'PYTHON','2022-07-15')
+INSERT INTO VIDEOS VALUES ('COMO APRENDER POWER BI DO ZERO', 'VISUALIZAÇÃO DE DADOS','2022-09-10')
+INSERT INTO VIDEOS VALUES ('COMO COMEÇAR EM CIENCIA DE DADOS', 'CIENCIA DE DADOS','2022-10-10')
+
+SELECT * FROM VIDEOS
+
+SELECT * FROM VIDEOS ORDER BY DATA_VIDEO
