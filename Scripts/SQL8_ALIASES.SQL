@@ -1,4 +1,4 @@
---Alias Syntax
+Ôªø--Alias Syntax
 
 --1 Criando a tabela
 
@@ -40,14 +40,14 @@ insert INTO ORDERS VALUES(106, '2009-10-08 00:00:00', 6, 3000);
 
 
 /*4 - Now, the following query shows the usage of a table alias. 
-The customers table is aliased as 'C' and the orders table is aliased as 'O' ? */
+The customers table is aliased as 'C' and the orders table is aliased as 'O' ‚àí */
 SELECT C.ID, C.NAME, C.AGE, C.SALARY
 FROM CUSTOMERS AS C, ORDERS AS O
 WHERE C.ID = O.CUSTOMER_ID
 
 
 /* Em resumo, ele selecionou os dados da tabela CUSTOMERS 
-onde o Id da Tabela È igual ao CUSTOMER_ID da tabela de ORDERS 
+onde o Id da Tabela √© igual ao CUSTOMER_ID da tabela de ORDERS 
 Ou seja, apenas os clientes que tem algum pedido
 */
 
@@ -58,12 +58,12 @@ SELECT * FROM CLIENTES
 SELECT * FROM PRODUTOS
 SELECT * FROM VENDAS
 
---6 Vou fazer a mesma coisa, pegar apenas os clientes que est„o cadastrados em alguma venda
+--6 Vou fazer a mesma coisa, pegar apenas os clientes que est√£o cadastrados em alguma venda
 SELECT C.ID_CLIENTE, C.NOME, C.DATA_NASCIMENTO
 FROM CLIENTES AS C, VENDAS AS V
 WHERE C.ID_CLIENTE = V.ID_CLIENTE
 
---7 Pegando os clientes que n„o est„o em nenhuma venda
+--7 Pegando os clientes que n√£o est√£o em nenhuma venda
 SELECT C.ID_CLIENTE, C.NOME, C.DATA_NASCIMENTO
 FROM CLIENTES AS C, VENDAS AS V
 WHERE C.ID_CLIENTE != V.ID_CLIENTE

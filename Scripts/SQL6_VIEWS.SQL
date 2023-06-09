@@ -1,3 +1,5 @@
+USE AdventureWorksDW2022
+
 --1 Criando uma view simples apenas com as informações que queremos
 
 CREATE VIEW vmAtSimpleView AS
@@ -31,3 +33,20 @@ GO
 
 SELECT * FROM vm_AT_MaterialStatus_PT_BR
 GO
+
+--4 Criando uma view com dados de outro banco (Contoso)
+USE AdventureWorksDW2022
+GO
+
+CREATE VIEW VM_AT_SisContoso_BR AS
+SELECT 
+	EmployeeKey as ID, 
+	FirstName as NOME, 
+	LastName as SOBRENOME,
+	EmailAddress as EMAIL,
+	Phone as TELEFONE
+
+FROM ContosoRetailDW.dbo.DimEmployee
+
+
+SELECT * FROM VM_AT_SisContoso_BR
