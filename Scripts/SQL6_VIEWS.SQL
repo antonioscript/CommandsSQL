@@ -50,3 +50,41 @@ FROM ContosoRetailDW.dbo.DimEmployee
 
 
 SELECT * FROM VM_AT_SisContoso_BR
+
+
+--5 Criando uma view com dados de outro banco (Contoso) - ]
+--Explicação do SET QUOTED_IDENTIFIER ON
+SELECT [First Name] FROM Customer;
+
+ou
+
+SET QUOTED_IDENTIFIER ON;
+SELECT "First Name" FROM Customer;
+---------------------------------------------
+
+--Continuando
+USE AdventureWorksDW2022
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE VIEW [dbo].[VM_AT_SisContoso_BR_Colchete]
+AS
+SELECT
+	C.[EmployeeKey] as [ID], 
+	C.[FirstName] as [NOME], 
+	C.[LastName] as [SOBRENOME],
+	C.[EmailAddress] as [EMAIL],
+	C.[Phone] as [TELEFONE]
+
+FROM [ContosoRetailDW].[dbo].[DimEmployee] C WITH (NOLOCK)
+-- FROM [ContosoRetailDW].[dbo].[DimEmployee] AS C WITH (NOLOCK) -- Poderia ser assim também
+
+GO
+
+
+SELECT * FROM [VM_AT_SisContoso_BR_Colchete]
