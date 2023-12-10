@@ -50,12 +50,12 @@ DROP TABLE ExemploTabela;
 
 --Adicionar uma nova coluna obrigatória e tratar os registros antigos
 
--- Adicionar a nova coluna ReservaEmergencia como DECIMAL(10, 2) com um valor padrão de 0.00
+--1. Adicionar a nova coluna ReservaEmergencia como DECIMAL(10, 2) com um valor padrão de 0.00
 ALTER TABLE ExemploTabela
 ADD ReservaEmergencia DECIMAL(10, 2) NOT NULL DEFAULT 0.00;
 
--- Atualizar os registros existentes com base em alguma condição
--- Neste exemplo, estou definindo ReservaEmergencia como 0.00 para todos os registros
+--2.Atualizar os registros existentes com base em alguma condição
+--2.1Neste exemplo, estou definindo ReservaEmergencia como 0.00 para todos os registros
 UPDATE ExemploTabela
 SET ReservaEmergencia = 0.00;
 
